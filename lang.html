@@ -1,0 +1,75 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Registration Form</title>
+    </head>
+    <body>
+        <h2>Registration Form</h2>
+        <form action="submit.php" method="post" enctype="multipart/form-data">
+            <p>
+                Full Name:<br>
+                <input type="text" name="fullname" placeholder="Enter your fullname" required>
+            </p>
+            <p>
+                Email <Address></Address>:<br>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </p>
+            <p>
+                Password:<br>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </p>
+            <p>
+                Age:<br>
+                <input type="number" name="age" min="18" max="100">
+            </p>
+            <p>
+                Date of birth:<br>
+                <input type="date" name="dob">
+            </p>
+            <p>
+                Gender:<br>
+                <input type="radio" name="gender" value="male"> male
+                <input type="radio" name="gender" value="female"> female
+                <input type="radio" name="gender" value="other"> other
+            </p>
+            <p>
+                Hobbies:<br>
+                <input type="checkbox" name="hobby" value="reading"> reading                       
+                <input type="checkbox" name="hobby" value="sports"> sports
+                <input type="checkbox" name="hobby" value="music"> Music
+                <input type="checkbox" name="hobby" value="travel"> Travel
+            </p>
+            <p>
+                Country:<br>
+                <select name="Country">
+                <option value="">--Select your Country--</option>
+                <option value="kenya">kenya</option>
+                <option value="ganda">Uganda</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Rwanda">Rwanda</option>
+            </select>
+            </p>
+            <p>
+                Rate your coding skills(1-10):<br>
+                <input type="range" name="skills" min="1" max="10">
+            </p>
+            <p>
+                Favourite colour:<br>
+                <input type="color" name="favcolour">
+            </p>
+            <p>
+                Upload profile picture:<br>
+                <input type="file" name="profilepic" accept="image/*">
+            </p>
+            <p>
+                About yourself:<br>
+                <textarea name="About" rows="5" cols="40" placeholder="write something about yourself..."></textarea>
+            </p>
+            <p>
+                <input type="submit" value="register">
+                <input type="reset" value="clear form">
+            </p>
+        </form>
+    </body>
+</html>
