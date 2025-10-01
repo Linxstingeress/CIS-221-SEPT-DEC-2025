@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #222;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 90%;
+      margin: 20px auto;
+    }
+    h2 {
+      margin-top: 30px;
+      color: #444;
+    }
+    /* Product grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .price {
+      font-weight: bold;
+      color: #e91e63;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    button {
+      padding: 5px 10px;
+      background: #e91e63;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: gray;
+      cursor: not-allowed;
+    }
+    .benefits {
+      margin-top: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+    .summary {
+      margin-top: 20px;
+      padding: 15px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fashion Store</h1>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#sales">Sales</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#inventory">Inventory</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Products Section -->
+    <section id="products">
+      <h2>Our Fashion Collection</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://via.placeholder.com/200x150?text=T-Shirt" alt="T-Shirt">
+          <h3>Classic T-Shirt</h3>
+          <p class="price">Ksh 1,200</p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/200x150?text=Jacket" alt="Jacket">
+          <h3>Denim Jacket</h3>
+          <p class="price">Ksh 4,200</p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/200x150?text=Dress" alt="Dress">
+          <h3>Floral Dress</h3>
+          <p class="price">Ksh 3,600</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sales Section -->
+    <section id="sales">
+      <h2>Upcoming Sale Offers</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Offer</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Discount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Back to Uni Sale</td>
+            <td>5 Oct 2025</td>
+            <td>12 Oct 2025</td>
+            <td>Up to 40%</td>
+          </tr>
+          <tr>
+            <td>Black Friday</td>
+            <td>20 Nov 2025</td>
+            <td>28 Nov 2025</td>
+            <td>20% - 70%</td>
+          </tr>
+          <tr>
+            <td>Year End Clearance</td>
+            <td>26 Dec 2025</td>
+            <td>5 Jan 2026</td>
+            <td>Up to 80%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+      <h2>Why Shop With Us?</h2>
+      <div class="benefits">
+        <p>✔ High-quality fashion products</p>
+        <p>✔ Affordable prices</p>
+        <p>✔ Fast delivery</p>
+        <p>✔ Secure payments</p>
+      </div>
+    </section>
+
+    <!-- Inventory Tracking Section (Part 2) -->
+    <section id="inventory">
+      <h2>Inventory & Sales Tracking</h2>
+      <table id="inventoryTable">
+        <tr>
+          <th>Product</th>
+          <th>Price (Ksh)</th>
+          <th>In Stock</th>
+          <th>Sold</th>
+          <th>Action</th>
+        </tr>
+      </table>
+
+      <div class="summary">
+        <h3>Store Summary</h3>
+        <p><strong>Total Revenue:</strong> Ksh <span id="revenue">0</span></p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; <span id="year"></span> Fashion Store. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Fake database
+    let products = [
+      {id: 1, name: "Classic T-Shirt", price: 1200, stock: 10, sold: 0},
+      {id: 2, name: "Denim Jacket", price: 4200, stock: 5, sold: 0},
+      {id: 3, name: "Floral Dress", price: 3600, stock: 8, sold: 0}
+    ];
+
+    function renderInventory() {
+      let table = document.getElementById("inventoryTable");
+      table.innerHTML = `
+        <tr>
+          <th>Product</th>
+          <th>Price (Ksh)</th>
+          <th>In Stock</th>
+          <th>Sold</th>
+          <th>Action</th>
+        </tr>`;
+      products.forEach(p => {
+        table.innerHTML += `
+          <tr>
+            <td>${p.name}</td>
+            <td>${p.price.toLocaleString()}</td>
+            <td>${p.stock}</td>
+            <td>${p.sold}</td>
+            <td><button onclick="buy(${p.id})" ${p.stock <= 0 ? "disabled" : ""}>Buy</button></td>
+          </tr>`;
+      });
+      updateRevenue();
+    }
+
+    function buy(id) {
+      let product = products.find(p => p.id === id);
+      if (product && product.stock > 0) {
+        product.stock--;
+        product.sold++;
+        renderInventory();
+      }
+    }
+
+    function updateRevenue() {
+      let revenue = products.reduce((sum, p) => sum + (p.sold * p.price), 0);
+      document.getElementById("revenue").innerText = revenue.toLocaleString();
+    }
+
+    // Set year dynamically
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // Initial render
+    renderInventory();
+  </script>
+</body>
+</html>
